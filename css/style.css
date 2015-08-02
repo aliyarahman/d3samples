@@ -28,17 +28,8 @@
 }
 
 
-/* Bar chart style */
-.chart div {
-  font: 18px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white;
-}
-
-
+/* Overall style */
+/*===============*/
 
 body {
     font-family: Circular-Pro-Book;
@@ -52,4 +43,27 @@ h1 {
 
 .black-text {
     color: #282828;
+}
+
+
+
+/* Bar chart style */
+
+.chart div {
+  font: 18px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+.chart rect {
+    fill: steelblue;
+}
+
+.chart text {
+    fill: white;
+    font: 14px sans-serif;
+    text-anchor: end;  /* SVG property that determines at what part (start, middle, end) of the element to anchor the text element we'll place */
 }
