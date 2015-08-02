@@ -28,6 +28,18 @@
 }
 
 
+/* Bar chart style */
+.chart div {
+  font: 18px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+
+
 body {
     font-family: Circular-Pro-Book;
     padding: 100px;
