@@ -51,24 +51,26 @@ var chart = d3.select("#svgchart")
 // Everything else (except for functions) has to happen after we have the data, and since d3 is ansynchronous, if we put these commands outside the loader brackets, the code will run before the data is downloaded and it won't work
 
     d3.tsv("http://localhost:8888/data/00barchartdata.tsv", type, function(error, barchartdata) { // Note the "type" thing is the function below that we run to get numbers out of the strings in the file
+        xsvg.domain([0, d3.max(barchartdata, function(d) { return d.value; })]); // The scale can be set without the data, but not the domain. If we don't set the domain, we get window sized domain which will flow off the svg chart.
+        svgchart.attr("height", barHeight * barchartdata.length); // We need the number of data points to calculate the chart's entire height.
 
-    // The bar variable is going to be an array of nodes - no rectangles attached yet
-    var bar = svgchart.selectAll("g") // A "g" element is a "group". transforms and translates happen to all the child elements within it
-        .data(barchartdata) // Bind data to all the nodes that exist.
-      .enter().append("g") // Create any nodes for data points that didn't already have one (so when it loads this is all of them)
-        .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; }); // Calculates how much to move each bar down on the y scale
+        // The bar variable is going to be an array of nodes - no rectangles attached yet
+        var bar = svgchart.selectAll("g") // A "g" element is a "group". transforms and translates happen to all the child elements within it
+            .data(barchartdata) // Bind data to all the nodes that exist.
+          .enter().append("g") // Create any nodes for data points that didn't already have one (so when it loads this is all of them)
+            .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; }); // Calculates how much to move each bar down on the y scale
 
-    bar.append("rect")  // Attach an svg rectangle to each d3 node we made in the array above
-        .attr("width", function(d) {return xsvg(d.value); }) // Since it's now fetching from a file, we have to have a function return the variable - it's not already in the scope of this code. Also, we need the value attribute of the object, because the file has both a name and a number
-        .attr("height", barHeight - 1); // Minus 1 lets us have space between them
-        
+        bar.append("rect")  // Attach an svg rectangle to each d3 node we made in the array above
+            .attr("width", function(d) { return xsvg(d.value); }) // Since it's now fetching from a file, we have to have a function return the variable - it's not already in the scope of this code. Also, we need the value attribute of the object, because the file has both a name and a number
+            .attr("height", barHeight - 1); // Minus 1 lets us have space between them
+            
 
-    bar.append("text")
-        .attr("x", function(d) {return xsvg(d.value) - 3; })
-        .attr("y", barHeight / 2)
-        .attr("dy", "0.35em") // This is an additional y offset relative to the pixel one we set above - it's relative to the font size so it will auto center the text vertically when text size changes
-        .text(function(d) { return d.value; }); // Grab the numerical value as the text label for the element
-});
+        bar.append("text")
+            .attr("x", function(d) {return xsvg(d.value) - 3; })
+            .attr("y", barHeight / 2)
+            .attr("dy", "0.35em") // This is an additional y offset relative to the pixel one we set above - it's relative to the font size so it will auto center the text vertically when text size changes
+            .text(function(d) { return d.value; }); // Grab the numerical value as the text label for the element
+    });
 
 // Helps us retrive numbers from the tsv file
 function type(d) {
