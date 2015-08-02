@@ -1,5 +1,7 @@
+// Code for two charts is included here: Part I, a pure HTML chart, and Part II, which is built off SVG elements
 
-/* Code for a pure HTML-d3 bar chart */
+
+/* Part I - Code for a pure HTML-d3 bar chart */
 /*===================================*/
 
 /* Note this code does not rotate x and y axes - so bars extend left to right across page */

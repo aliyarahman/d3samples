@@ -9,5 +9,6 @@ I'm not making up and posting new tutorials (yet) - there are plenty of those, a
 
 So far, I've included code and comments for:
 
-00bar_chart: Mike Bostock's tutorial on basic bar charts, parts I and II (just horizontal bars). http://bost.ocks.org/mike/bar/1/
-01bar_chart * not done: Mike Bostock's tutorial on bar charts, part III (vertical bars, and adds labels) http://bost.ocks.org/mike/bar/3/
+*00bar_chart: Mike Bostock's tutorial on basic bar charts, parts I and II (just horizontal bars). http://bost.ocks.org/mike/bar/1/
+
+*01bar_chart * not done: Mike Bostock's tutorial on bar charts, part III (vertical bars, and adds labels) http://bost.ocks.org/mike/bar/3/
