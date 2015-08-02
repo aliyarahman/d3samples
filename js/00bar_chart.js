@@ -2,6 +2,8 @@
 /* Code for a pure HTML-d3 bar chart */
 /*===================================*/
 
+/* Note this code does not rotate x and y axes - so bars extend left to right across page */
+
 
 var data = [4, 8, 15, 16, 23, 42]; // Sample data, where each value is the length of a bar in the graph we're about to make
 
